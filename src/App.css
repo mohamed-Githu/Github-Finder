@@ -1,38 +1,109 @@
-.App {
-  text-align: center;
+:root {
+    --color-primary-dark: rgb(17, 17, 46);
+    --color-primary-light: rgb(10, 24, 73);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+body {
+    font-family: sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
 }
 
-.App-link {
-  color: #61dafb;
+.navbar {
+    background-color: red;
+    color: #fff;
+    padding: 1rem 2.5rem;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: .3rem;
+    font-weight: 200;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.header__logo {
+    width: 4rem;
+    margin-right: 3rem;
+}
+
+.users-container {
+    max-width: 114rem;
+    padding: 3rem;
+    margin: 3rem auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 6rem;
+}
+
+.user-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-primary-dark);
+    padding: 3rem 6rem;
+}
+
+.user-item > * {
+    margin: 1rem 0;
+}
+
+.user-item__pic {
+    border-radius: 50%;
+    width: 8.5rem;
+}
+
+.user-item__name {
+    font-size:2rem;
+    color: #fff;
+}
+
+.user-item__link:link,
+.user-item__link:visited {
+    text-decoration: none;
+    font-size: 1.8rem;
+    padding: .5rem .1rem;
+    width: 8rem;
+    color: #fff;
+    border-bottom: 1px solid #fff;
+    display: flex;
+    justify-content: space-between;
+    transition: all 0.2s;
+    letter-spacing: 0.1rem;
+    font-weight: 300;
+}
+
+.user-item__link:hover,
+.user-item__link:focus {
+    transform: scale(1.01) translateY(-2px);
+    outline: none;
+}
+
+.spinner {
+    margin: 8rem auto;
+    display: block;
+    animation: rotating 1s infinite linear;
+}
+
+@keyframes rotating {
+    from {
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
