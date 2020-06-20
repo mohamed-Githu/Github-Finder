@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap');
+
 :root {
-    --color-primary-dark: rgb(17, 17, 46);
-    --color-primary-light: rgb(10, 24, 73);
+    --color-primary-light: rgb(17, 17, 46);
+    --color-primary-dark: rgb(3, 3, 10);
+    --color-primary-lighter: #1d1d5a;
 }
 
 *,
@@ -16,50 +19,157 @@ html {
     box-sizing: border-box;
 }
 
+@media only screen and (max-width: 31.25em) {
+    html {
+        font-size: 50%;
+    }
+}
+
 body {
-    font-family: sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: 400;
     line-height: 1.6;
+    background-image: linear-gradient(to right bottom, var(--color-primary-light), var(--color-primary-dark)) ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top;
+    min-height: 100vh;
+}
+
+.App {
+    margin: 5rem auto;
+    max-width: 114rem;
+    min-height: 90vh;
+    border-radius: 5px;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+@media only screen and (max-width: 71.85em) {
+    .App {
+        margin: 0 auto;
+    }
 }
 
 .navbar {
-    background-color: red;
-    color: #fff;
-    padding: 1rem 2.5rem;
+    background-color: #fff;
+    color: var(--color-primary-dark);
     font-size: 2rem;
     text-transform: uppercase;
     letter-spacing: .3rem;
-    font-weight: 200;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
-.header__logo {
-    width: 4rem;
-    margin-right: 3rem;
+.navbar__header {
+    font-weight: 600;
+    margin: auto;
+}
+
+.navbar__list {
+    display: flex;
+    list-style: none;
+    font-weight: 400;
+    font-size: 1.4rem;
+    background-color: var(--color-primary-dark);
+    align-self: stretch;
+    align-items: center;
+    padding: 2rem;
+    margin-right: -1px;
+}
+
+.navbar__item {
+    padding: 0 1rem;
+}
+
+@media only screen and (max-width: 26.25em) {
+    .navbar {
+        font-size: 1.8rem;
+    }
+
+    .navbar__list {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .navbar__item {
+        margin: .2rem 0;
+    }
+}
+.navbar__link:link,
+.navbar__link:visited {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.navbar__link.active {
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+.alert {
+    margin: 1rem 0;
+    background-color: rgb(161, 40, 46);
+    padding: .5rem;
+    font-size: 1.4rem;
 }
 
 .users-container {
-    max-width: 114rem;
-    padding: 3rem;
-    margin: 3rem auto;
+    padding: 3rem 6rem;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 6rem;
+    grid-template-rows: min-content;
+    grid-row-gap: 3rem;
+    grid-column-gap: 8rem;
+}
+
+@media only screen and (max-width: 59.375em) {
+    .users-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media only screen and (max-width: 40.625em) {
+    .users-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media only screen and (max-width: 26.25em) {
+    .users-container {
+        padding: 3rem 2rem;
+    }
+}
+
+.users-container__clear {
+    grid-column: 1 / -1;
+    font-size: 1.5rem;
+    padding: 1rem;
+    text-transform: uppercase;
+    cursor: pointer;
 }
 
 .user-item {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--color-primary-dark);
-    padding: 3rem 6rem;
+    background-color: rgba(0, 0, 0, 0.3);
+    border: none;
+    text-align: center;
+    border-bottom: 3px solid #1d1d5a;
 }
 
-.user-item > * {
-    margin: 1rem 0;
+.user-item > *:not(:first-child) {
+    margin: 3rem 0;
+}
+
+.user-item__pic-wrapper {
+    background-color: var(--color-primary-lighter);
+    text-align: center;
+    padding: 4rem 0;
+    clip-path: polygon(0 0, 100% 0,100% 80%, 0 100%);
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
 }
 
 .user-item__pic {
@@ -84,7 +194,7 @@ body {
     justify-content: space-between;
     transition: all 0.2s;
     letter-spacing: 0.1rem;
-    font-weight: 300;
+    margin: 3rem auto;
 }
 
 .user-item__link:hover,
@@ -93,8 +203,103 @@ body {
     outline: none;
 }
 
+.search {
+    text-align: center;
+    margin: 0 6rem;
+    margin-top: 2rem;  
+    position: relative;
+}
+
+@media only screen and (max-width: 26.25em) {
+    .search {
+        margin: 2rem;
+    }
+}
+
+.user-container {
+    max-width: 40rem;
+    margin: 3rem auto;
+    text-align: center;
+    background-color: red;
+}
+
+.user-container__button {
+    margin: 2rem auto;
+    width: 95%;
+    font-size: 1.5rem;
+    padding: 1rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    background-color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+
+.user-container__link:link,
+.user-container__link:visited {
+    text-decoration: none;
+    color: var(--color-primary-dark);
+}
+
+.user-container__link:focus,
+.user-container__link:active {
+    outline: none;
+}
+
+.search__input {
+    padding: 1.5rem 2rem;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 2px;
+    background-color: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.5);
+    border-bottom: 3px solid transparent;
+    width: 100%;
+    border-bottom: 3px solid #1d1d5a;
+    color: #888;
+}
+
+.search__input:focus {
+    outline: none;
+}
+
+.search__button {
+    position: absolute;
+    top: 50;
+    right: 0;
+    margin-top: .5rem;
+    margin-right: 1rem;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.search-icon {
+    height: 3.8rem;
+}
+
+.about {
+    padding: 3rem 5rem;
+}
+
+.about__header {
+    font-size: 2.5rem;
+    letter-spacing: .3rem;
+    text-transform: uppercase;
+    color: #fff;
+    margin: 2rem 0 1rem 0;
+    font-weight: 300;
+}
+
+.about__text {
+    font-size: 2rem;
+    color: #8a8a8a;
+}
+
 .spinner {
-    margin: 8rem auto;
+    height: 6rem;
+    margin: 10rem auto;
     display: block;
     animation: rotating 1s infinite linear;
 }
@@ -104,6 +309,15 @@ body {
         transform: rotate(0);
     }
     to {
-        transform: rotate(360deg);
+        transform: rotate(-360deg);
     }
+}
+
+.particles-js {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    left: 0;
 }

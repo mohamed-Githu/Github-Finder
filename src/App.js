@@ -9,12 +9,14 @@ import Home from './components/pages/Home';
 import NotFound from './components/pages/NotFound';
 
 import './App.css';
+import Background from './components/background/Background'
 
 const App = () => {
   return (
     <GithubState>
       <Router>
         <div className="App">
+          <Background />
           <Navbar />
           <Switch>
               <Route exact path='/' component={ Home } />

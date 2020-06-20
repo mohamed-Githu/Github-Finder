@@ -1,20 +1,40 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import PropTypes from 'prop-types'
-import logo from './github-logo.png';
 import { Link } from 'react-router-dom';
+import classlist, { toggleClass } from 'react-classlist-helper';
 
 const Navbar = ({title}) => {
+    const [activeLink, setActiveLink] = useState(true);
+
+    const changeActive = e => {
+        if (!e.target.classList.contains('active')) {
+            if (activeLink) {
+                setActiveLink(false);
+            } else {
+                setActiveLink(true);
+
+            }
+        }
+    }
+
     return (
         <nav className="navbar">
-            <img src={logo} alt="logo" className="header__logo"/>
-            <h1 className="header__heading">{title}</h1>
+            <h1 className="navbar__header">{title}</h1>
             <Fragment>
-            <ul>
-               <li>
-                   <Link to='/'>Home</Link>
+            <ul className="navbar__list">
+               <li className="navbar__item">
+                   <Link to='/' 
+                    className={ classlist("navbar__link", toggleClass("active", activeLink)) } 
+                    onClick={ changeActive }>
+                        Home
+                    </Link>
                </li> 
-               <li>
-                   <Link to='/about'>About</Link>
+               <li className="navbar__item">
+                   <Link to='/about' 
+                    className={ classlist("navbar__link", toggleClass("active", !activeLink)) }
+                    onClick={ changeActive }>
+                        About
+                    </Link>
                </li>
             </ul>
             </Fragment>

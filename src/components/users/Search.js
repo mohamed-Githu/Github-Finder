@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react'
 import Alert from './Alert';
 import GithubContext from '../../context/github/githubContext'
+import icon from './search-icon.png'
 
 const Search = () => {
     const [text, setText] = useState('');
@@ -11,11 +12,11 @@ const Search = () => {
 
         setTimeout(() => {
         setAlert(false);
-        }, 4000);
+        }, 5000);
     }
 
     const githubContext = useContext(GithubContext)
-    const { searchUsers, users, clearUsers } = githubContext
+    const { searchUsers } = githubContext
 
     const onChange = e => {
         setText( e.target.value );
@@ -33,19 +34,20 @@ const Search = () => {
 
     return (
         <div>
-            <Alert alert={alert} />
+            { alert &&  <Alert alert={alert} />}
             <form className="search" onSubmit={onSubmit}>
 
                 <input type="text" 
                 name="text" 
-                className="search__box" 
+                className="search__input" 
                 placeholder="Search Users"
                 value={text}
                 onChange={onChange} />
 
-                <button type="submit" className="search__button">Search</button>
+                <button type="submit" className="search__button">
+                    <img src={ icon } alt="search icon" className="search-icon"/>
+                </button>
             </form>
-            { users.length > 0 && (<button onClick={clearUsers}>clear</button>) }
         </div>
     )
 }

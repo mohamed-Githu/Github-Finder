@@ -2,7 +2,7 @@ import React from 'react'
 
 const Alert = props => {
     return (
-        <div>
+        <div className="alert">
             { props.alert && <div>
                 <p>Please enter something</p>
             </div> }
