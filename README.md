@@ -1,3 +1,12 @@
+A web application for searching github users, using the github develper api and react js for the frontend.
+
+Other technologies:
+- react context api
+- react router dom
+- raect particles
+
+LIVE DEMO: https://github-accounts-finder.netlify.app/
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
