@@ -16,40 +16,51 @@ const User = ({ match }) => {
 
 
     const {
-        name, avatar_url, location, bio, blog,
-        login, html_url, following, followers,
-        public_repos, public_gists, hireable
+        avatar_url,
+        login,
+        html_url,
+        following,
+        followers,
+        public_repos
     } = user;
-    
+
     if (loading) {
         return <Spinner />
     } else {
         return (
-            <div className="user-container">
-                <button className="user-container__button">
-                    <Link className="user-container__link" to='/'>Back to search</Link>
-                </button>
-                <div className="user-container__content">
-                    <div>
-                        <img src={avatar_url} alt="user-pic" className="user-item__pic"/>
-                        <div>{name}</div>
-                        <div>{location}</div>
-                        <div>{bio}</div>
-                        <div>{blog}</div>
-                        <div>{login}</div>
-                        <div>{html_url}</div>
-                        <div>{following}</div>
-                        <div>{followers}</div>
-                        <div>{public_repos}</div>
-                        <div>{public_gists}</div>
-                        <div>{hireable}</div>
-                    </div>
-                    <div className="repos">
-                        { !reposLoading && <Repos repos={repos} /> }
-                        { reposLoading && <Spinner /> }
+            <>
+                <div className="button-container">
+                    <button className="user-container__button">
+                        <Link className="user-container__link" to='/'>Back to search</Link>
+                    </button>
+                </div>
+                <div className="user-container">
+                    <div className="user-container__content">
+                        <img src={avatar_url} alt="user-pic" className="user-item__pic" />
+                        <div>
+                            <div><strong className="bold">Name: </strong>{login}</div>
+                            <div>
+                                <strong className="bold">URL: </strong>
+                                <a
+                                    href={html_url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    {html_url}
+                                </a>
+                            </div>
+                            <div><strong className="bold">Following: </strong>{following}</div>
+                            <div><strong className="bold">Followers: </strong>{followers}</div>
+                            <div><strong className="bold">Public Repos: </strong>{public_repos}</div>
+                        </div>
+                        <p className="user-container__header">Repos</p>
+                        <div className="repos">
+                            {!reposLoading && <Repos repos={repos} />}
+                            {reposLoading && <Spinner />}
+                        </div>
                     </div>
                 </div>
-            </div>
+            </>
         )
     }
 }
