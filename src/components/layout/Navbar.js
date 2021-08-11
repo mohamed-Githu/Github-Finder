@@ -5,6 +5,7 @@ import styled from "styled-components";
 
 const NavContainer = styled.nav`
   ${({ theme }) => `
+    overflow: hidden;
     background-color: ${theme.colors.white};
     color: ${theme.colors.primary.dark};
     font-size: 2rem;

@@ -27,6 +27,11 @@ const SearchForm = styled.form`
       border-bottom: 3px solid ${theme.colors.white};
       color: ${theme.colors.grey.dark};
       outline: none;
+      
+      &::placeholder {
+        color: ${theme.colors.white};
+        opacity: .5;
+      }
     }
   `}
 `;

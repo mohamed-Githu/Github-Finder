@@ -42,7 +42,7 @@ const Users = () => {
   } else {
     return (
       <UsersContainer>
-        {users.length && (
+        {users.length > 0 && (
           <ClearButton onClick={clearUsers}>clear list</ClearButton>
         )}
 

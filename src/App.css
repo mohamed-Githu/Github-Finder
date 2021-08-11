@@ -1,9 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap");
 
 :root {
-  --color-primary-light: rgb(17, 17, 46);
-  --color-primary-dark: rgb(3, 3, 10);
-  --color-primary-lighter: #1d1d5a;
+  --color-primary-light: #7fc4fd;
+  --color-primary-dark: #05436f;
+  --color-primary-lighter: "rgba(11,115,185)";
 }
 
 *,
@@ -44,6 +44,7 @@ body {
   width: 100%;
   max-width: 114rem;
   min-height: 90vh;
+  padding-bottom: 1rem;
   border-radius: 5px;
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.5);
   background-color: rgba(0, 0, 0, 0.4);
